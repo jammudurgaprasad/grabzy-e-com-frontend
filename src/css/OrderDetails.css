@@ -1,0 +1,181 @@
+.order-details-wrapper {
+  margin-bottom: 50px;
+  max-width: 1000px;
+  margin: 20px auto;
+  padding: 16px;
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 0 8px rgba(0,0,0,0.05);
+}
+
+.order-details-wrapper h2 {
+  text-align: center;
+  margin-bottom: 24px;
+  font-weight: 600;
+  color: #333;
+}
+
+.order-main-card {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  align-items: center;
+  border: 1px solid #ddd;
+  padding: 16px;
+  border-radius: 10px;
+  background-color: #fafafa;
+}
+
+.order-image {
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.order-info {
+  flex-grow: 1;
+  min-width: 200px;
+}
+
+.price-line {
+  font-weight: bold;
+  margin: 8px 0;
+}
+
+.old-price {
+  text-decoration: line-through;
+  color: #999;
+  margin-left: 10px;
+}
+
+.discount {
+  color: green;
+  margin-left: 8px;
+}
+
+.order-status-block {
+  text-align: center;
+  min-width: 150px;
+}
+
+.status-label {
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+
+.status-line {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.status-step {
+  padding: 6px 12px;
+  background-color: #ddd;
+  margin: 4px;
+  border-radius: 6px;
+  font-size: 14px;
+  color: #333;
+}
+
+.status-step.active {
+  background-color: #4caf50;
+  color: white;
+}
+
+.arrow {
+  margin: 0 6px;
+}
+
+.cancel-button {
+  margin-top: 12px;
+  padding: 6px 14px;
+  background-color: #f44336;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.cancel-button:hover {
+  background-color: #d32f2f;
+}
+
+.delivery-info {
+  margin-top: 30px;
+  border-top: 1px solid #ddd;
+  padding-top: 20px;
+}
+
+.delivery-info h4 {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* 
+
+.status-vertical-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  margin-top: 12px;
+  align-items: flex-start;
+}
+
+.status-block {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  opacity: 0.4;
+  transform: scale(0.95);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.status-block.active-block {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.status-step-name {
+  font-size: 13px;
+  font-weight: 500;
+  color: #333;
+  text-transform: uppercase;
+} */
+
+.single-status-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 4px;
+  gap: 2px; /* Reduced from 6px to 2px */
+}
+
+.single-status-label {
+  font-size: 13px;
+  font-weight: 500;
+  color: #333;
+  margin: 0; /* Ensure no extra margin */
+  padding: 0;
+  text-transform: uppercase;
+}

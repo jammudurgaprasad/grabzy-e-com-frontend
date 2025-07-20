@@ -1,0 +1,95 @@
+/* App.css */
+:root {
+  --primary: #111827;        /* Dark slate (text, titles) */
+  --secondary: #6366F1;      /* Indigo (accent color) */
+  --background: #F9FAFB;     /* Very light gray background */
+  --card-bg: #FFFFFF;        /* Card background */
+  --border: #E5E7EB;         /* Light gray border */
+  --muted: #6B7280;          /* Muted secondary text */
+  --text-light: #ffffff;     /* Light text for buttons */
+}
+
+body {
+  margin: 0;
+  font-family: 'Inter', sans-serif;
+  background-color: var(--background);
+  color: var(--primary);
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+/* Headings */
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 600;
+  color: var(--primary);
+  margin-bottom: 0.5rem;
+}
+
+/* Links */
+a {
+  color: var(--secondary);
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+a:hover {
+  color: #4F46E5;
+}
+
+/* Buttons */
+button {
+  background-color: var(--secondary);
+  color: var(--text-light);
+  border: none;
+  padding: 12px 20px;
+  border-radius: 8px;
+  font-weight: 500;
+  transition: background-color 0.25s ease, transform 0.2s ease;
+}
+
+button:hover {
+  background-color: #4F46E5;
+  transform: scale(1.02);
+}
+
+/* Cards */
+.card {
+  background-color: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 24px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.04);
+  transition: box-shadow 0.3s ease;
+}
+
+.card:hover {
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.06);
+}
+
+/* Forms */
+input, textarea, select {
+  width: 100%;
+  padding: 10px 14px;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background-color: #fff;
+  font-size: 1rem;
+  transition: border-color 0.25s ease;
+}
+
+input:focus, textarea:focus, select:focus {
+  border-color: var(--secondary);
+  outline: none;
+}
+
+/* Utility */
+.text-muted {
+  color: var(--muted);
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+}
