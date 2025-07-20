@@ -10,25 +10,16 @@ export default function Profile({ user }) {
   const [showForm, setShowForm] = useState(false);
   const [form, setForm] = useState({ name: '', phoneNumber: '', address: '', city: '', district: '', state: '', pincode: '' });
   const [editingId, setEditingId] = useState(null);
-  const [isAuthenticated, setIsAuthenticated] = useState(null);
   const [cityOptions, setCityOptions] = useState([]);
 
   const navigate = useNavigate();
 
-  useEffect(() => {
-    const fetchUserAuth = async () => {
-      try {
-        await axios.get(`${process.env.REACT_APP_API_BASE_URL}/users/check-user-auth`, {
-          withCredentials: true,
-        });
-        setIsAuthenticated(true);
-      } catch {
-        setIsAuthenticated(false);
-      }
-    };
+useEffect(() => {
+  axios.get(`${process.env.REACT_APP_API_BASE_URL}/users/check-user-auth`, {
+    withCredentials: true,
+  }).catch(() => {});
+}, []);
 
-    fetchUserAuth();
-  }, []);
 
   useEffect(() => {
     if (!user?.userId) return;

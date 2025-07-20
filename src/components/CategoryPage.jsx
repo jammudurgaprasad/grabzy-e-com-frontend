@@ -8,22 +8,13 @@ export default function CategoryPage() {
   const { categoryName } = useParams();
   const [products, setProducts] = useState([]);
   const [showFilters, setShowFilters] = useState(false);
-  const [isAuthenticated, setIsAuthenticated] = useState(null);
 
-  useEffect(() => {
-    const fetchUserAuth = async () => {
-      try {
-        await axios.get(`${process.env.REACT_APP_API_BASE_URL}/users/check-user-auth`, {
-          withCredentials: true,
-        });
-        setIsAuthenticated(true);
-      } catch {
-        setIsAuthenticated(false);
-      }
-    };
+useEffect(() => {
+  axios.get(`${process.env.REACT_APP_API_BASE_URL}/users/check-user-auth`, {
+    withCredentials: true,
+  }).catch(() => {});
+}, []);
 
-    fetchUserAuth();
-  }, []);
 
   useEffect(() => {
     axios.get(`${process.env.REACT_APP_API_BASE_URL}/product`).then(res => {

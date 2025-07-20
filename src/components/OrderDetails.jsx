@@ -3,7 +3,6 @@ import { useParams, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import '../css/OrderDetails.css';
 import Navbar from './Navbar';
-import { Player } from '@lottiefiles/react-lottie-player';
 import { DotLottieReact } from '@lottiefiles/dotlottie-react';
 
 
