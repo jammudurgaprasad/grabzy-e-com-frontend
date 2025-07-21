@@ -9,38 +9,38 @@ export default function Home() {
   const [data, setData] = useState({});
   const [loading, setLoading] = useState(true);
 
-  // useEffect(() => {
-  //   axios.get(`${process.env.REACT_APP_API_BASE_URL}/product`).then(res => {
-  //     const grouped = {};
-  //     res.data.forEach(p => {
-  //       grouped[p.category] ||= [];
-  //       grouped[p.category].push(p);
-  //     });
-  //     setData(grouped);
-  //     setLoading(false);
-  //   });
-  // }, []);
-
-
   useEffect(() => {
-  axios.get(`${process.env.REACT_APP_API_BASE_URL}/product`)
-    .then(res => {
+    axios.get(`${process.env.REACT_APP_API_BASE_URL}/product`).then(res => {
       const grouped = {};
-      const products = Array.isArray(res.data) ? res.data : [];
-
-      products.forEach(p => {
+      res.data.forEach(p => {
         grouped[p.category] ||= [];
         grouped[p.category].push(p);
       });
-
       setData(grouped);
       setLoading(false);
-    })
-    .catch(err => {
-      console.error("Failed to load products:", err);
-      setLoading(false);
     });
-}, []);
+  }, []);
+
+
+//   useEffect(() => {
+//   axios.get(`${process.env.REACT_APP_API_BASE_URL}/product`)
+//     .then(res => {
+//       const grouped = {};
+//       const products = Array.isArray(res.data) ? res.data : [];
+
+//       products.forEach(p => {
+//         grouped[p.category] ||= [];
+//         grouped[p.category].push(p);
+//       });
+
+//       setData(grouped);
+//       setLoading(false);
+//     })
+//     .catch(err => {
+//       console.error("Failed to load products:", err);
+//       setLoading(false);
+//     });
+// }, []);
 
 
 
