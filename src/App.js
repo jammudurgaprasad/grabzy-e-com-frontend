@@ -44,7 +44,7 @@ function App() {
         <Route path="/profile" element={<Profile user={user} />} /> {/* ✅ Pass user here */}
         <Route path="/orders" element={<Orders user={user} />} />
         <Route path="/wishlist" element={<Wishlist user={user} />} />
-        <Route path="/place-order" element={<PlaceOrderPage />} />
+        <Route path="/place-order" element={<PlaceOrderPage user={user} />} />
         <Route path="/order/:orderId" element={<OrderDetails />} />
       </Routes>
     </BrowserRouter>
