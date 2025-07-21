@@ -12,6 +12,8 @@ const PlaceOrderPage = () => {
   const [cartItems, setCartItems] = useState([]);
   const [paymentMode, setPaymentMode] = useState("cod"); // 'cod' or 'online'
   const [showSuccess, setShowSuccess] = useState(false);
+  const [loading, setLoading] = useState(true); // 👈 Loader state
+
   
 
 
@@ -30,32 +32,36 @@ const PlaceOrderPage = () => {
     fetchUserId();
   }, []);
 
-  useEffect(() => {
-    if (!userId) return;
+useEffect(() => {
+  if (!userId) return;
 
-    const fetchAddresses = async () => {
-      try {
-        const res = await axios.get(`${process.env.REACT_APP_API_BASE_URL}/addresses/user/${userId}`);
-        setAddresses(res.data);
-      } catch (err) {
-        console.error("Failed to fetch addresses:", err);
-      }
-    };
+  const fetchAddresses = axios.get(`${process.env.REACT_APP_API_BASE_URL}/addresses/user/${userId}`);
+  const fetchCart = axios.get(`${process.env.REACT_APP_API_BASE_URL}/carts/user/${userId}`, {
+    withCredentials: true,
+  });
 
-    const fetchCart = async () => {
-      try {
-        const res = await axios.get(`${process.env.REACT_APP_API_BASE_URL}/carts/user/${userId}`, {
-          withCredentials: true,
-        });
-        setCartItems(res.data);
-      } catch (err) {
-        console.error("Failed to fetch cart items:", err);
-      }
-    };
+  Promise.all([fetchAddresses, fetchCart])
+    .then(([addrRes, cartRes]) => {
+      setAddresses(addrRes.data);
+      console.log(addrRes.data);
+      setCartItems(cartRes.data);
+    })
+    .catch((err) => {
+      console.error("Error fetching address or cart:", err);
+    })
+    .finally(() => {
+      setLoading(false); // 👈 Stop loading
+    });
+}, [userId]);
 
-    fetchAddresses();
-    fetchCart();
-  }, [userId]);
+
+
+
+
+
+
+
+
 
   const subtotal = cartItems.reduce((sum, item) => sum + item.product.discountPrice * item.quantity, 0);
   const actualTotal = cartItems.reduce((sum, item) => sum + item.product.actualPrice * item.quantity, 0);
@@ -128,7 +134,9 @@ setTimeout(() => {
       description: "Product Purchase",
       order_id: razorOrder.id,
 handler: async function (response) {
+  
   try {
+    console.log("Orders to be placed:", orders);
     await axios.post(`${process.env.REACT_APP_API_BASE_URL}/orders/place`, orders, {
   withCredentials: true,
 });
@@ -168,9 +176,29 @@ setTimeout(() => {
 
 
 
-  if (!cartItems.length) {
-    return <><Navbar/><div className="cart-empty">🛒 Your cart is empty.</div></>;
-  }
+  // if (!cartItems.length) {
+  //   return <><Navbar/><div className="cart-empty">🛒 Your cart is empty.</div></>;
+  // }
+
+
+
+if (loading) {
+  return (
+    <>
+      <Navbar />
+      <div className="loader-container">
+        <div className="loader"></div>
+      </div>
+    </>
+  );
+}
+
+
+
+
+
+
+
 
   if (showSuccess) {
   return (

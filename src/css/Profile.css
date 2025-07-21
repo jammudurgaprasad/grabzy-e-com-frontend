@@ -261,21 +261,26 @@
 }
 
 .loader {
-  width: fit-content;
-  font-weight: bold;
-  font-family: monospace;
-  font-size: 30px;
-  clip-path: inset(0 3ch 0 0);
-  animation: l4 1s steps(4) infinite;
-  color: #2563eb; /* blue-600 */
+  width: 50px;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  border: 8px solid;
+  border-color: #000 #0000;
+  animation: l1 1s infinite;
 }
 
-.loader::before {
-  content: "Loading...";
-}
-
-@keyframes l4 {
+@keyframes l1 {
   to {
-    clip-path: inset(0 -1ch 0 0);
+    transform: rotate(0.5turn);
   }
+}
+
+
+
+.loader-container-inner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 300px;
+  background-color: #f9fafb;
 }

@@ -42,7 +42,9 @@ const statusSteps = [
       .get(`${process.env.REACT_APP_API_BASE_URL}/orders/${orderId}`, {
         withCredentials: true,
       })
-      .then((res) => setOrder(res.data))
+      .then((res) => {setOrder(res.data);
+        console.log(res.data);
+      })
       .catch((err) => {
         console.error('Failed to fetch order', err);
         setError('Failed to load order details.');
@@ -83,7 +85,19 @@ const getStatusSteps = () => {
   };
 
   if (error) return <><Navbar /><div className="order-details-wrapper">{error}</div></>;
-  if (!order) return <><Navbar /><div className="order-details-wrapper">Loading...</div></>;
+  // if (!order) return <><Navbar /><div className="order-details-wrapper">Loading...</div></>;
+
+if (!order) {
+  return (
+    <>
+      <Navbar />
+      <div className="loader-wrapper">
+        <div className="loader"></div>
+      </div>
+    </>
+  );
+}
+
 
   return (
     <>
@@ -110,7 +124,7 @@ const getStatusSteps = () => {
           </div>
 
           <div className="order-status-block">
-            <p className="status-label">Status:</p>
+            <p className="status-label">Status:</p>{order.status === 'CANCELLED' && (<h4 style={{color:'red'}}>CANCELLED</h4>)}
             <div className="status-line">{getStatusSteps()}</div>
             {order.status === 'PENDING' && (
               <button className="cancel-button" onClick={cancelOrder}>Cancel</button>

@@ -8,6 +8,8 @@ export default function Cart() {
   const [cartItems, setCartItems] = useState([]);
   const [userId, setUserId] = useState(null);
   const navigate = useNavigate();
+  const [loading, setLoading] = useState(true); // 👈 Added
+
 
   useEffect(() => {
     axios.get(`${process.env.REACT_APP_API_BASE_URL}/users/check-user-auth`, {
@@ -22,10 +24,18 @@ export default function Cart() {
   useEffect(() => {
     if (userId) {
       axios.get(`${process.env.REACT_APP_API_BASE_URL}/carts/user/${userId}`, {
-        withCredentials: true,
-      }).then(res => {
-        setCartItems(res.data);
-      });
+  withCredentials: true,
+})
+.then(res => {
+  setCartItems(res.data);
+})
+.catch(() => {
+  setCartItems([]);
+})
+.finally(() => {
+  setLoading(false); // 👈 stop loading
+});
+
     }
   }, [userId]);
 
@@ -62,6 +72,21 @@ export default function Cart() {
   const deliveryFee = subtotal > 500 ? 0 : 69;
   const platformFee = 5;
   const totalPayable = subtotal + deliveryFee + platformFee;
+
+
+if (loading) {
+  return (
+    <>
+      <Navbar />
+      <div className="loader-container">
+        <div className="loader"></div>
+      </div>
+    </>
+  );
+}
+
+
+
 
   if (!cartItems.length) {
     return <><Navbar/><div className="cart-empty">🛒 Your cart is empty.</div></>;

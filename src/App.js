@@ -14,6 +14,7 @@ import PlaceOrderPage from './components/PlaceOrderPage';
 import OrderDetails from './components/OrderDetails';
 import Orders from './components/Orders';
 import Wishlist from './components/Wishlist';
+import CategoriesOption from './components/CategoriesOption';
 
 function App() {
   const [user, setUser] = useState(null);
@@ -46,6 +47,7 @@ function App() {
         <Route path="/wishlist" element={<Wishlist user={user} />} />
         <Route path="/place-order" element={<PlaceOrderPage />} />
         <Route path="/order/:orderId" element={<OrderDetails />} />
+        <Route path="/categories" element={<CategoriesOption />} />
       </Routes>
     </BrowserRouter>
   );

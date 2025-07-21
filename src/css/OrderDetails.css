@@ -1,5 +1,5 @@
 .order-details-wrapper {
-  margin-bottom: 50px;
+  margin-bottom: 150px;
   max-width: 1000px;
   margin: 20px auto;
   padding: 16px;
@@ -106,6 +106,7 @@
 
 .delivery-info {
   margin-top: 30px;
+  margin-bottom: 50px;
   border-top: 1px solid #ddd;
   padding-top: 20px;
 }
@@ -114,54 +115,6 @@
   font-size: 18px;
   margin-bottom: 10px;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/* 
-
-.status-vertical-wrapper {
-  display: flex;
-  flex-direction: column;
-  gap: 18px;
-  margin-top: 12px;
-  align-items: flex-start;
-}
-
-.status-block {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  opacity: 0.4;
-  transform: scale(0.95);
-  transition: opacity 0.3s ease, transform 0.3s ease;
-}
-
-.status-block.active-block {
-  opacity: 1;
-  transform: scale(1);
-}
-
-.status-step-name {
-  font-size: 13px;
-  font-weight: 500;
-  color: #333;
-  text-transform: uppercase;
-} */
 
 .single-status-wrapper {
   display: flex;
@@ -178,4 +131,29 @@
   margin: 0; /* Ensure no extra margin */
   padding: 0;
   text-transform: uppercase;
+}
+
+
+
+.loader-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 70vh; /* Ensures it's vertically centered */
+  width: 100%;
+}
+
+.loader {
+  width: 50px;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  border: 8px solid;
+  border-color: #000 #0000;
+  animation: l1 1s infinite;
+}
+
+@keyframes l1 {
+  to {
+    transform: rotate(.5turn);
+  }
 }

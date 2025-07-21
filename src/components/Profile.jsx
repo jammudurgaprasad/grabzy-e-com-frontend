@@ -29,54 +29,6 @@ useEffect(() => {
       .catch(err => console.error("Failed to fetch addresses", err));
   }, [user]);
 
-//   const handleChange = e => {
-//     const { name, value } = e.target;
-//     setForm({ ...form, [name]: value });
-
-//     if (name === 'pincode') {
-//       const pincode = value.trim();
-
-// let allMatchedCities = [];
-// let matchedState = '';
-// let matchedDistrict = '';
-
-// for (const state in pincodeData) {
-//   for (const district in pincodeData[state]) {
-//     const matchedCities = Object.entries(pincodeData[state][district]).filter(
-//       ([city, pin]) => pin.trim() === pincode
-//     ).map(([city]) => city.trim());
-
-//     if (matchedCities.length > 0) {
-//       allMatchedCities = [...allMatchedCities, ...matchedCities];
-//       // Set state and district only once (take first match)
-//       if (!matchedState && !matchedDistrict) {
-//         matchedState = state.trim();
-//         matchedDistrict = district.trim();
-//       }
-//     }
-//   }
-// }
-
-// if (allMatchedCities.length > 0) {
-//   setForm(f => ({
-//     ...f,
-//     state: matchedState,
-//     district: matchedDistrict,
-//     city: allMatchedCities[0] || ''
-//   }));
-//   setCityOptions([...new Set(allMatchedCities)]);
-// } else {
-//   setForm(f => ({ ...f, state: '', district: '', city: '' }));
-//   setCityOptions([]);
-// }
-
-
-
-
-//     }
-//   };
-
-
 
 const handleChange = e => {
   const { name, value } = e.target;
@@ -160,30 +112,43 @@ const handleChange = e => {
       .catch(err => console.error('Error deleting address', err));
   };
 
-  const edit = a => {
-    setForm(a);
-    setEditingId(a.id);
+const edit = a => {
+  setForm({
+    name: a.name || '',
+    phoneNumber: a.phoneNumber || '',
+    address: a.address || '',
+    city: a.city || '',
+    district: a.district || '',
+    state: a.state || '',
+    pincode: a.pincode || ''
+  });
+  setEditingId(a.id);
+  setShowForm(true);
 
-    // Load cities if a pincode is already present
-    if (a.pincode) {
-      const pincode = a.pincode.trim();
-      for (const state in pincodeData) {
-        for (const district in pincodeData[state]) {
-          const matchedCities = Object.entries(pincodeData[state][district]).filter(
-            ([city, pin]) => pin.trim() === pincode
-          );
+  // Load cities if a pincode is already present
+  if (a.pincode) {
+    const pincode = a.pincode.trim();
+    let matchedCities = [];
 
-          if (matchedCities.length > 0) {
-            const cities = matchedCities.map(([city]) => city.trim());
-            setCityOptions(cities);
-            return;
-          }
+    for (const state in pincodeData) {
+      for (const district in pincodeData[state]) {
+        const matches = Object.entries(pincodeData[state][district]).filter(
+          ([city, pin]) => pin.trim() === pincode
+        );
+
+        if (matches.length > 0) {
+          matchedCities = matches.map(([city]) => city.trim());
+          setCityOptions(matchedCities);
+          return;
         }
       }
     }
+  }
+};
 
-    setShowForm(true);
-  };
+
+
+
 
   if (!user) {
     return (
@@ -192,6 +157,7 @@ const handleChange = e => {
         <div className="loader-container">
           <div className="loader"></div>
         </div>
+
       </>
     );
   }
