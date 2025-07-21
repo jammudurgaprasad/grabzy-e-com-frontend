@@ -49,51 +49,6 @@ const statusSteps = [
       });
   }, [orderId, isAuthenticated]);
 
-
-// const getStatusSteps = () => {
-//   const currentIndex = statusSteps.findIndex(step => step.name === order.status);
-
-//   return (
-//     <div className="status-vertical-wrapper">
-//       {statusSteps.map((step, index) => (
-//         <div key={step.name} className={`status-block ${index <= currentIndex ? 'active-block' : ''}`}>
-//           <Player
-//             autoplay
-//             loop={false}
-//             src={step.animation}
-//             className="status-animation"
-//           />
-//           <p className="status-step-name">{step.name}</p>
-//         </div>
-//       ))}
-//     </div>
-//   );
-// };
-
-
-
-// const getStatusSteps = () => {
-//   const currentIndex = statusSteps.findIndex(step => step.name === order.status);
-
-//   return (
-//     <div className="status-vertical-wrapper">
-//       {statusSteps.map((step, index) => (
-//         <div key={step.name} className={`status-block ${index <= currentIndex ? 'active-block' : ''}`}>
-//           <DotLottieReact
-//             src={step.animation}
-//             autoplay
-//             loop
-//             style={{ width: '40px', height: '40px' }}
-//           />
-//           <p className="status-step-name">{step.name}</p>
-//         </div>
-//       ))}
-//     </div>
-//   );
-// };
-
-
-
 const getStatusSteps = () => {
   const currentStep = statusSteps.find(step => step.name === order.status);
 

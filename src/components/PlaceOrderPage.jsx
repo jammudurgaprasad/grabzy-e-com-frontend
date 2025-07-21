@@ -93,7 +93,6 @@ const confirmOrder = async () => {
     status: "PENDING"
   }));
 
-  console.log("Order payload to be sent:", orders);
 
   if (paymentMode === "cod") {
     await axios.post(`${process.env.REACT_APP_API_BASE_URL}/orders/place`, orders, {
@@ -129,7 +128,6 @@ setTimeout(() => {
       description: "Product Purchase",
       order_id: razorOrder.id,
 handler: async function (response) {
-  console.log("Payment Success Response:", response);
   try {
     await axios.post(`${process.env.REACT_APP_API_BASE_URL}/orders/place`, orders, {
   withCredentials: true,
