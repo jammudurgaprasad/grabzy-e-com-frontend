@@ -15,7 +15,7 @@ export default function OrderDetails() {
 const statusSteps = [
   { name: 'PENDING', animation: 'https://lottie.host/5737e681-77d8-4bdb-ae45-d9f1feac7ede/hZKkQG0f3P.lottie' },
   { name: 'SHIPPED', animation: 'https://lottie.host/6ef6944f-4251-479b-9214-2bc8eff9a1a3/luFuPYt7um.lottie' },
-  { name: 'OUT FOR DELIVERY', animation: 'https://lottie.host/2ac4e970-6c36-4c03-a7f6-2ccce4959328/BJdzfziiSE.lottie' },
+  { name: 'OUT_FOR_DELIVERY', animation: 'https://lottie.host/2ac4e970-6c36-4c03-a7f6-2ccce4959328/BJdzfziiSE.lottie' },
   { name: 'DELIVERED', animation: 'https://lottie.host/ee131fa2-a635-4c8b-b77c-5630f4f38391/7vbi9rS0qI.lottie' }
 ];
 
