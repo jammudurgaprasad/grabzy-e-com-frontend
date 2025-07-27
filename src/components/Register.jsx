@@ -5,7 +5,7 @@ import { DotLottieReact } from '@lottiefiles/dotlottie-react';
 import '../css/Auth.css';
 
 export default function Register() {
-  const [form, setForm] = useState({ gmail: '', password: '' });
+  const [form, setForm] = useState({ email: '', password: '' });
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -48,11 +48,11 @@ export default function Register() {
         <h2>Register</h2>
         <input
           type="email"
-          name="gmail"
+          name="email"
           placeholder="Email"
           required
-          value={form.gmail}
-          onChange={(e) => setForm((prev) => ({ ...prev, gmail: e.target.value }))}
+          value={form.email}
+          onChange={(e) => setForm((prev) => ({ ...prev, email: e.target.value }))}
         />
         <input
           type="password"
