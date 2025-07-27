@@ -11,7 +11,7 @@ export default function Login() {
   useEffect(() => {
     const checkAuth = async () => {
       try {
-        const res = await axios.get(`${process.env.REACT_APP_API_BASE_URL}/users/check-user-auth`, {
+        await axios.get(`${process.env.REACT_APP_API_BASE_URL}/users/check-user-auth`, {
           withCredentials: true,
         });
         navigate('/');
@@ -25,7 +25,7 @@ export default function Login() {
   const handleSubmit = async e => {
     e.preventDefault();
     try {
-      const response = await axios.post(`${process.env.REACT_APP_API_BASE_URL}/users/login`, form, {
+      await axios.post(`${process.env.REACT_APP_API_BASE_URL}/users/login`, form, {
         withCredentials: true,
       });
       navigate('/');
